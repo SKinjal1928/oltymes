@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/txt_purchase"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:layout_marginHorizontal="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:gravity="start"
+        android:text="Purchase"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_light" />
+    <TextView
+        android:id="@+id/txt_sales"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:layout_marginHorizontal="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:gravity="start"
+        android:text="Sales"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_light" />
+    <TextView
+        android:id="@+id/txt_customer"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:layout_marginHorizontal="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:gravity="start"
+        android:text="Customer"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_light" />
+</LinearLayout>

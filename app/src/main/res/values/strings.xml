@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Oltyems</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="order">Order</string>
+    <string name="inventory">Inventory</string>
+    <string name="master">Master</string>
+    <string name="shipment_1">Shipment 1</string>
+    <string name="shipment_2">Shipment 2</string>
+    <string name="shipment_3">Shipment 3</string>
+    <string name="label">All Shipment</string>
+</resources>
