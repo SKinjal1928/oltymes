@@ -5,6 +5,7 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -13,9 +14,14 @@ import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.MenuRes;
 import androidx.fragment.app.Fragment;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.textile.oltyems.R;
 import app.textile.oltyems.ScannedBarcodeActivity;
@@ -23,14 +29,26 @@ import app.textile.oltyems.activity.CustomerActivity;
 import app.textile.oltyems.activity.NewProductActivity;
 import app.textile.oltyems.activity.SalesActivity;
 import app.textile.oltyems.activity.ViewAllActivity;
-import app.textile.oltyems.databinding.ActivityDashboardBinding;
+import app.textile.oltyems.adapter.AdapterNewProduct;
+import app.textile.oltyems.common.FetchProductList;
+import app.textile.oltyems.common.SharedPref;
 import app.textile.oltyems.databinding.FragDashboardBinding;
+import app.textile.oltyems.model.FetchShipmentList;
+import app.textile.oltyems.model.FetchShipmentResponse;
+import app.textile.oltyems.retrofit.RetroInterface;
+import app.textile.oltyems.retrofit.RetrofitClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardFragment extends Fragment {
 
     FragDashboardBinding binding;
+    RetroInterface apiInterface;
+    List<FetchShipmentList.Datum> shipmentList;
+    String Ship_id = "";
 
-    public DashboardFragment(){
+    public DashboardFragment() {
         // require a empty public constructor
     }
 
@@ -39,6 +57,9 @@ public class DashboardFragment extends Fragment {
         // Inflate the layout for this fragment
 //        View rootView = inflater.inflate(R.layout.frag_dashboard, container, false);
         binding = FragDashboardBinding.inflate(inflater, container, false);
+        SharedPref.init(getActivity());
+        shipmentList = new ArrayList<>();
+        getShipmentListing();
         binding.llScanBarcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +129,92 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
+
         return binding.getRoot();
+    }
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+
+    private void getPurchaseListing() {
+//        binding.progressBar.setVisibility(View.VISIBLE);
+        apiInterface = RetrofitClient.getRetrofitInstance().create(RetroInterface.class);
+        Call<FetchShipmentResponse> call1 = apiInterface.pendingDataList("Bearer " + SharedPref.getString("token", "") + "",
+                Ship_id);
+        call1.enqueue(new Callback<FetchShipmentResponse>() {
+            @Override
+            public void onResponse(Call<FetchShipmentResponse> call, Response<FetchShipmentResponse> response) {
+//                binding.progressBar.setVisibility(View.GONE);
+                Log.d("TAG", response.code() + "");
+
+                if (response.code() == 200) {
+                    Log.d("Purchase Success",  "");
+                    if (response.body().getData().getOrderCounts().getPending() != null) {
+                        binding.txtPendingCount.setText("Pending (" + response.body().getData().getOrderCounts().getPending() + ")");
+                    }
+                    if (response.body().getData().getOrderCounts().getProceed() != null) {
+                        binding.txtProcessCount.setText("Process (" + response.body().getData().getOrderCounts().getProceed() + ")");
+                    }
+                    if (response.body().getData().getOrderCounts().getCompleted() != null) {
+                        binding.txtCompleteCount.setText("Complete (" + response.body().getData().getOrderCounts().getCompleted() + ")");
+                    }
+
+                    if (response.body().getData().getPendingData() != null) {
+                        if (response.body().getData().getPendingData().getTotalCtnShip() != null) {
+                            binding.txtCtnPending.setText(response.body().getData().getPendingData().getTotalCtnShip() + "");
+                        }
+                        if (response.body().getData().getPendingData().getTotalCbmShip() != null) {
+                            binding.txtCbmPending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalCbmShip())) + "");
+                        }
+                        if (response.body().getData().getPendingData().getTotalWeightShip() != null) {
+                            binding.txtWeightPending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalWeightShip())) + "");
+                        }
+                        if (response.body().getData().getPendingData().getTotalInvoiceShip() != null) {
+                            binding.txtInvoicePending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalInvoiceShip())) + "");
+                        }
+
+                    }
+                    if (response.body().getData().getProceedData() != null) {
+                        if (response.body().getData().getProceedData().getTotalCtnShip() != null) {
+                            binding.txtCtnProcess.setText(response.body().getData().getProceedData().getTotalCtnShip() + "");
+                        }
+                        if (response.body().getData().getProceedData().getTotalCbmShip() != null) {
+                            binding.txtCbmProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalCbmShip())) + "");
+                        }
+                        if (response.body().getData().getProceedData().getTotalWeightShip()!= null) {
+                            binding.txtWeightProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalWeightShip())) + "");
+                        }
+                        if (response.body().getData().getProceedData().getTotalInvoiceShip() != null) {
+                            binding.txtInvoiceProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalInvoiceShip())) + "");
+                        }
+                    }
+
+                    if (response.body().getData().getCompletedData() != null) {
+                        if (response.body().getData().getCompletedData().getTotalCtnShip() != null) {
+                            binding.txtCtnComplete.setText(response.body().getData().getCompletedData().getTotalCtnShip()+ "");
+                        }
+                        if (response.body().getData().getCompletedData().getTotalCbmShip() != null) {
+                            binding.txtCbmComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalCbmShip())) + "");
+                        }
+                        if (response.body().getData().getCompletedData().getTotalWeightShip() != null) {
+                            binding.txtWeightComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalWeightShip())) + "");
+                        }
+                        if (response.body().getData().getCompletedData().getTotalInvoiceShip() != null) {
+                            binding.txtInvoiceComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalInvoiceShip())) + "");
+                        }
+                    }
+
+                } else {
+                    Toast.makeText(getActivity(), "Data error..", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<FetchShipmentResponse> call, Throwable t) {
+//                binding.progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "Something went wrong..", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void showMenu(View v, @MenuRes int menuRes) {
@@ -117,7 +223,12 @@ public class DashboardFragment extends Fragment {
 
         // Create a PopupMenu
         PopupMenu popup = new PopupMenu(context, v);
-
+        for (int i = 0; i < shipmentList.size(); i++) {
+            popup.getMenu().add(shipmentList.get(i).getShipmentName());
+        }
+       /* popup.getMenu().add("AGIL");
+        popup.getMenu().add("AGILarasan");
+        popup.getMenu().add("Arasan");*/
         // Inflate the menu from the resource
         popup.getMenuInflater().inflate(menuRes, popup.getMenu());
 
@@ -125,13 +236,16 @@ public class DashboardFragment extends Fragment {
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                if(menuItem.getItemId() == R.id.option_1){
+                int i = menuItem.getItemId();
+                if (i == 1) {
+                    Ship_id = shipmentList.get(0).getShipId() + "";
                     return true;
-                }else if(menuItem.getItemId() == R.id.option_2){
+                } else if (i == 2) {
+                    Ship_id = shipmentList.get(1).getShipId() + "";
                     return true;
-                }else if(menuItem.getItemId() == R.id.option_3){
+                } else if (i == 3) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
             }
@@ -152,7 +266,7 @@ public class DashboardFragment extends Fragment {
     private void showCustomDialog(View anchorView) {
         View view = getActivity().findViewById(R.id.ll_dashboard);
         // Create a view for the popup window (this will be our dialog-like view)
-        LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.bottom_sheet_create, null);
 
         TextView txtPurchase = popupView.findViewById(R.id.txt_purchase);
@@ -196,7 +310,38 @@ public class DashboardFragment extends Fragment {
         // Show the PopupWindow above the button (adjust for the size of the button)
         popupWindow.showAtLocation(view, Gravity.BOTTOM,
                 location[0], location[1]);
+    }
 
+    private void getShipmentListing() {
+//        binding.progressBar.setVisibility(View.VISIBLE);
+        apiInterface = RetrofitClient.getRetrofitInstance().create(RetroInterface.class);
+        Call<FetchShipmentList> call1 = apiInterface.fetchShipmentList("Bearer " + SharedPref.getString("token", "") + "");
+        call1.enqueue(new Callback<FetchShipmentList>() {
+            @Override
+            public void onResponse(Call<FetchShipmentList> call, Response<FetchShipmentList> response) {
+//                binding.progressBar.setVisibility(View.GONE);
+                Log.d("TAG", response.code() + "");
 
+                shipmentList.clear();
+                if (response.code() == 200) {
+                    Log.d("Shipment data Success", response.body().getSuccess() + "");
+                    shipmentList.addAll(response.body().getData());
+                    if (shipmentList.size() > 0) {
+                        Ship_id = shipmentList.get(0).getShipId() + "";
+                        getPurchaseListing();
+                    }
+
+                } else {
+                    Toast.makeText(getActivity(), "Data error..", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<FetchShipmentList> call, Throwable t) {
+//                binding.progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "Something went wrong..", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

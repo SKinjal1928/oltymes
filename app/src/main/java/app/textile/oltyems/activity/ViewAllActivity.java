@@ -55,11 +55,12 @@ public class ViewAllActivity extends AppCompatActivity {
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                if(menuItem.getItemId() == R.id.option_1){
+                int i = menuItem.getItemId();
+                if(i == 1){
                     return true;
-                }else if(menuItem.getItemId() == R.id.option_2){
+                }else if(i == 2){
                     return true;
-                }else if(menuItem.getItemId() == R.id.option_3){
+                }else if(i == 3){
                     return true;
                 }else {
                     return false;
