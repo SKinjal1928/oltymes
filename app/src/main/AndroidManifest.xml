@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:hardwareAccelerated="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -27,14 +26,17 @@
             android:name=".ScannedBarcodeActivity"
             android:exported="false" />
         <activity
+            
             android:name=".activity.SampleActivity"
             android:exported="true" />
         <activity
+            
             android:name=".activity.LoginActivity"
             android:exported="true">
 
         </activity>
         <activity
+            
             android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -44,22 +46,30 @@
             </intent-filter>
         </activity>
         <activity
+            
             android:name=".activity.DashboardActivity"
             android:exported="true" />
         <activity
+            
             android:name=".activity.ViewAllActivity"
             android:exported="true" />
         <activity
+            
             android:name=".activity.NewProductActivity"
-            android:exported="true" /><activity
+            android:exported="true" />
+
+        <activity
+            
             android:name=".activity.SalesActivity"
             android:exported="true" />
 
         <activity
+            
             android:name=".activity.CustomerActivity"
             android:exported="true" />
 
         <activity
+            
             android:name=".activity.PurchaseActivity"
             android:exported="true" />
 
