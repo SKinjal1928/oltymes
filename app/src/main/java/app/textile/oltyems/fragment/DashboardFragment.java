@@ -29,8 +29,6 @@ import app.textile.oltyems.activity.CustomerActivity;
 import app.textile.oltyems.activity.NewProductActivity;
 import app.textile.oltyems.activity.SalesActivity;
 import app.textile.oltyems.activity.ViewAllActivity;
-import app.textile.oltyems.adapter.AdapterNewProduct;
-import app.textile.oltyems.common.FetchProductList;
 import app.textile.oltyems.common.SharedPref;
 import app.textile.oltyems.databinding.FragDashboardBinding;
 import app.textile.oltyems.model.FetchShipmentList;

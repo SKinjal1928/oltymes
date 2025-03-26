@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -23,14 +24,15 @@
         android:theme="@style/Theme.Oltyems"
         tools:targetApi="31">
         <activity
+            android:theme="@style/Theme.Oltyems"
             android:name=".ScannedBarcodeActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.SampleActivity"
             android:exported="true" />
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.LoginActivity"
             android:exported="true">
 
@@ -38,7 +40,8 @@
         <activity
             
             android:name=".activity.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Oltyems">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,30 +49,30 @@
             </intent-filter>
         </activity>
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.DashboardActivity"
             android:exported="true" />
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.ViewAllActivity"
             android:exported="true" />
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.NewProductActivity"
             android:exported="true" />
 
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.SalesActivity"
             android:exported="true" />
 
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.CustomerActivity"
             android:exported="true" />
 
         <activity
-            
+            android:theme="@style/Theme.Oltyems"
             android:name=".activity.PurchaseActivity"
             android:exported="true" />
 
