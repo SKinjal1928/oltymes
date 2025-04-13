@@ -1,0 +1,19 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer border color and thickness -->
+    <stroke
+        android:width="2dp"
+        android:color="#BDBDBD" /> <!-- Light Gray border -->
+
+    <!-- Corner radius for rounded corners -->
+    <corners android:radius="3dp" />
+
+    <!-- Background color -->
+    <solid android:color="#FFFFFF" />
+
+    <!-- Optional padding inside the border -->
+    <padding
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp"
+        android:bottom="2dp" />
+</shape>

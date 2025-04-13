@@ -8,4 +8,9 @@
     <string name="shipment_2">Shipment 2</string>
     <string name="shipment_3">Shipment 3</string>
     <string name="label">All Shipment</string>
+
+    <string-array name="unit_options">
+        <item>Pcs</item>
+        <item>Weight</item>
+    </string-array>
 </resources>

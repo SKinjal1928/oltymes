@@ -47,18 +47,18 @@ public class FetchShipmentResponse {
         @SerializedName("totalPcsShip")
         @Expose
         private String totalPcsShip;
-        @SerializedName("totalCbmShip")
+        @SerializedName("totalCbmCompleted")
         @Expose
-        private String totalCbmShip;
-        @SerializedName("totalWeightShip")
+        private String totalCbmCompleted;
+        @SerializedName("totalGrossWeightCompleted")
         @Expose
-        private String totalWeightShip;
+        private String totalGrossWeightCompleted;
         @SerializedName("totalCostShip")
         @Expose
         private String totalCostShip;
-        @SerializedName("totalInvoiceShip")
+        @SerializedName("totalInvoiceValueCompleted")
         @Expose
-        private String totalInvoiceShip;
+        private String totalInvoiceValueCompleted;
         @SerializedName("totalSalePriceShip")
         @Expose
         private String totalSalePriceShip;
@@ -80,19 +80,19 @@ public class FetchShipmentResponse {
         }
 
         public String getTotalCbmShip() {
-            return totalCbmShip;
+            return totalCbmCompleted;
         }
 
         public void setTotalCbmShip(String totalCbmShip) {
-            this.totalCbmShip = totalCbmShip;
+            this.totalCbmCompleted = totalCbmShip;
         }
 
         public String getTotalWeightShip() {
-            return totalWeightShip;
+            return totalGrossWeightCompleted;
         }
 
         public void setTotalWeightShip(String totalWeightShip) {
-            this.totalWeightShip = totalWeightShip;
+            this.totalGrossWeightCompleted = totalWeightShip;
         }
 
         public String getTotalCostShip() {
@@ -104,11 +104,11 @@ public class FetchShipmentResponse {
         }
 
         public String getTotalInvoiceShip() {
-            return totalInvoiceShip;
+            return totalInvoiceValueCompleted;
         }
 
         public void setTotalInvoiceShip(String totalInvoiceShip) {
-            this.totalInvoiceShip = totalInvoiceShip;
+            this.totalInvoiceValueCompleted = totalInvoiceShip;
         }
 
         public String getTotalSalePriceShip() {
@@ -224,18 +224,18 @@ public class FetchShipmentResponse {
         @SerializedName("totalPcsShip")
         @Expose
         private String totalPcsShip;
-        @SerializedName("totalCbmShip")
+        @SerializedName("totalCbmPending")
         @Expose
-        private String totalCbmShip;
-        @SerializedName("totalWeightShip")
+        private String totalCbmPending;
+        @SerializedName("totalGrossWeightPending")
         @Expose
-        private String totalWeightShip;
+        private String totalGrossWeightPending;
         @SerializedName("totalCostShip")
         @Expose
         private String totalCostShip;
-        @SerializedName("totalInvoiceShip")
+        @SerializedName("totalInvoiceValuePending")
         @Expose
-        private String totalInvoiceShip;
+        private String totalInvoiceValuePending;
         @SerializedName("totalSalePriceShip")
         @Expose
         private String totalSalePriceShip;
@@ -257,19 +257,19 @@ public class FetchShipmentResponse {
         }
 
         public String getTotalCbmShip() {
-            return totalCbmShip;
+            return totalCbmPending;
         }
 
         public void setTotalCbmShip(String totalCbmShip) {
-            this.totalCbmShip = totalCbmShip;
+            this.totalCbmPending = totalCbmShip;
         }
 
         public String getTotalWeightShip() {
-            return totalWeightShip;
+            return totalGrossWeightPending;
         }
 
         public void setTotalWeightShip(String totalWeightShip) {
-            this.totalWeightShip = totalWeightShip;
+            this.totalGrossWeightPending = totalWeightShip;
         }
 
         public String getTotalCostShip() {
@@ -281,11 +281,11 @@ public class FetchShipmentResponse {
         }
 
         public String getTotalInvoiceShip() {
-            return totalInvoiceShip;
+            return totalInvoiceValuePending;
         }
 
         public void setTotalInvoiceShip(String totalInvoiceShip) {
-            this.totalInvoiceShip = totalInvoiceShip;
+            this.totalInvoiceValuePending = totalInvoiceShip;
         }
 
         public String getTotalSalePriceShip() {
@@ -305,18 +305,18 @@ public class FetchShipmentResponse {
         @SerializedName("totalPcsShip")
         @Expose
         private String totalPcsShip;
-        @SerializedName("totalCbmShip")
+        @SerializedName("totalCbmProceed")
         @Expose
-        private String totalCbmShip;
-        @SerializedName("totalWeightShip")
+        private String totalCbmProceed;
+        @SerializedName("totalGrossWeightProceed")
         @Expose
-        private String totalWeightShip;
+        private String totalGrossWeightProceed;
         @SerializedName("totalCostShip")
         @Expose
         private String totalCostShip;
-        @SerializedName("totalInvoiceShip")
+        @SerializedName("totalInvoiceValueProceed")
         @Expose
-        private String totalInvoiceShip;
+        private String totalInvoiceValueProceed;
         @SerializedName("totalSalePriceShip")
         @Expose
         private String totalSalePriceShip;
@@ -338,19 +338,19 @@ public class FetchShipmentResponse {
         }
 
         public String getTotalCbmShip() {
-            return totalCbmShip;
+            return totalCbmProceed;
         }
 
         public void setTotalCbmShip(String totalCbmShip) {
-            this.totalCbmShip = totalCbmShip;
+            this.totalCbmProceed = totalCbmShip;
         }
 
         public String getTotalWeightShip() {
-            return totalWeightShip;
+            return totalGrossWeightProceed;
         }
 
         public void setTotalWeightShip(String totalWeightShip) {
-            this.totalWeightShip = totalWeightShip;
+            this.totalGrossWeightProceed = totalWeightShip;
         }
 
         public String getTotalCostShip() {
@@ -362,11 +362,11 @@ public class FetchShipmentResponse {
         }
 
         public String getTotalInvoiceShip() {
-            return totalInvoiceShip;
+            return totalInvoiceValueProceed;
         }
 
         public void setTotalInvoiceShip(String totalInvoiceShip) {
-            this.totalInvoiceShip = totalInvoiceShip;
+            this.totalInvoiceValueProceed = totalInvoiceShip;
         }
 
         public String getTotalSalePriceShip() {

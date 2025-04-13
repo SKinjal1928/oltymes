@@ -2,21 +2,16 @@ package app.textile.oltyems.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import app.textile.oltyems.R;
-import app.textile.oltyems.adapter.AdapterNewProduct;
 import app.textile.oltyems.adapter.AdapterPurchase;
-import app.textile.oltyems.databinding.ActivityNewProductBinding;
 import app.textile.oltyems.databinding.ActivityPurchaseBinding;
 import app.textile.oltyems.model.ItemNewProduct;
 

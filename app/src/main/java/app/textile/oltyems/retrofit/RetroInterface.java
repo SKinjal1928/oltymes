@@ -3,6 +3,7 @@ package app.textile.oltyems.retrofit;
 import app.textile.oltyems.common.FetchProductList;
 import app.textile.oltyems.model.CreateCustomer;
 import app.textile.oltyems.model.CreateOrder;
+import app.textile.oltyems.model.FetchOrderList;
 import app.textile.oltyems.model.FetchShipmentList;
 import app.textile.oltyems.model.FetchShipmentResponse;
 import app.textile.oltyems.pojo.CustomerReq;
@@ -33,6 +34,9 @@ public interface RetroInterface {
     @GET("fetch-product")
     Call<FetchProductList> fetchProductList(@Header("Authorization") String token);
 
+    @GET("fetch-open-order")
+    Call<FetchOrderList> fetchOrderList(@Header("Authorization") String token);
+
     @GET("fetch-shipment")
     Call<FetchShipmentList> fetchShipmentList(@Header("Authorization") String token);
 
@@ -42,4 +46,7 @@ public interface RetroInterface {
     @POST("create-order")
     Call<CreateOrder> createOrder(@Body ProductReq createCustomer, @Header("Authorization") String token);
 
+    @GET("get-shipment-product/{ship_id}")
+    Call<app.textile.oltyems.model.FetchProductList> fetchShipmentProduct(@Header("Authorization") String token,
+                                                                          @Path("ship_id") String ship_id);
 }

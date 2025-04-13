@@ -17,4 +17,9 @@
         <item name="android:windowEnterAnimation">@anim/popup_show</item>
 <!--        <item name="android:windowExitAnimation">@anim/popup_show</item>-->
     </style>
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
 </resources>

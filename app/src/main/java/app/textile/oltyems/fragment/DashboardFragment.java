@@ -127,21 +127,49 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
+        binding.llPurchasePending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), SalesActivity.class);
+                i.putExtra("from","pending");
 
+                i.putExtra("ship_id",Ship_id);
+                startActivity(i);
+//                startActivity(new Intent(getActivity(), SalesActivity.class));
+            }
+        });
+        binding.llPurchaseProcess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), SalesActivity.class);
+                i.putExtra("from","process");
+                i.putExtra("ship_id",Ship_id);
+                startActivity(i);
+            }
+        });
+        binding.llPurchaseComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), SalesActivity.class);
+                i.putExtra("from","complete");
+                i.putExtra("ship_id", Ship_id);
+                startActivity(i);
+            }
+        });
         return binding.getRoot();
     }
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     private void getPurchaseListing() {
-//        binding.progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
         apiInterface = RetrofitClient.getRetrofitInstance().create(RetroInterface.class);
         Call<FetchShipmentResponse> call1 = apiInterface.pendingDataList("Bearer " + SharedPref.getString("token", "") + "",
                 Ship_id);
         call1.enqueue(new Callback<FetchShipmentResponse>() {
             @Override
             public void onResponse(Call<FetchShipmentResponse> call, Response<FetchShipmentResponse> response) {
-//                binding.progressBar.setVisibility(View.GONE);
+
                 Log.d("TAG", response.code() + "");
 
                 if (response.code() == 200) {
@@ -164,10 +192,12 @@ public class DashboardFragment extends Fragment {
                             binding.txtCbmPending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalCbmShip())) + "");
                         }
                         if (response.body().getData().getPendingData().getTotalWeightShip() != null) {
-                            binding.txtWeightPending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalWeightShip())) + "");
+//                            binding.txtWeightPending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalWeightShip())) + "");
+                            binding.txtWeightPending.setText(response.body().getData().getPendingData().getTotalWeightShip() + "");
                         }
                         if (response.body().getData().getPendingData().getTotalInvoiceShip() != null) {
-                            binding.txtInvoicePending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalInvoiceShip())) + "");
+//                            binding.txtInvoicePending.setText(df.format(Float.parseFloat(response.body().getData().getPendingData().getTotalInvoiceShip())) + "");
+                            binding.txtInvoicePending.setText(response.body().getData().getPendingData().getTotalInvoiceShip() + "");
                         }
 
                     }
@@ -179,10 +209,12 @@ public class DashboardFragment extends Fragment {
                             binding.txtCbmProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalCbmShip())) + "");
                         }
                         if (response.body().getData().getProceedData().getTotalWeightShip()!= null) {
-                            binding.txtWeightProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalWeightShip())) + "");
+//                            binding.txtWeightProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalWeightShip())) + "");
+                            binding.txtWeightProcess.setText(response.body().getData().getProceedData().getTotalWeightShip() + "");
                         }
                         if (response.body().getData().getProceedData().getTotalInvoiceShip() != null) {
-                            binding.txtInvoiceProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalInvoiceShip())) + "");
+//                            binding.txtInvoiceProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalInvoiceShip())) + "");
+                            binding.txtInvoiceProcess.setText(response.body().getData().getProceedData().getTotalInvoiceShip() + "");
                         }
                     }
 
@@ -194,13 +226,15 @@ public class DashboardFragment extends Fragment {
                             binding.txtCbmComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalCbmShip())) + "");
                         }
                         if (response.body().getData().getCompletedData().getTotalWeightShip() != null) {
-                            binding.txtWeightComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalWeightShip())) + "");
+//                            binding.txtWeightComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalWeightShip())) + "");
+                            binding.txtWeightComplete.setText(response.body().getData().getCompletedData().getTotalWeightShip() + "");
                         }
                         if (response.body().getData().getCompletedData().getTotalInvoiceShip() != null) {
-                            binding.txtInvoiceComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalInvoiceShip())) + "");
+//                            binding.txtInvoiceComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalInvoiceShip())) + "");
+                            binding.txtInvoiceComplete.setText(response.body().getData().getCompletedData().getTotalInvoiceShip() + "");
                         }
                     }
-
+                    binding.progressBar.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(getActivity(), "Data error..", Toast.LENGTH_SHORT).show();
                 }
@@ -209,7 +243,7 @@ public class DashboardFragment extends Fragment {
 
             @Override
             public void onFailure(Call<FetchShipmentResponse> call, Throwable t) {
-//                binding.progressBar.setVisibility(View.GONE);
+                binding.progressBar.setVisibility(View.GONE);
                 Toast.makeText(getActivity(), "Something went wrong..", Toast.LENGTH_SHORT).show();
             }
         });
@@ -222,11 +256,10 @@ public class DashboardFragment extends Fragment {
         // Create a PopupMenu
         PopupMenu popup = new PopupMenu(context, v);
         for (int i = 0; i < shipmentList.size(); i++) {
-            popup.getMenu().add(shipmentList.get(i).getShipmentName());
+            popup.getMenu().add(i, shipmentList.get(i).getShipId(), 0, shipmentList.get(i).getShipmentName());
+
+//            popup.getMenu().add(shipmentList.get(i).getShipmentName());
         }
-       /* popup.getMenu().add("AGIL");
-        popup.getMenu().add("AGILarasan");
-        popup.getMenu().add("Arasan");*/
         // Inflate the menu from the resource
         popup.getMenuInflater().inflate(menuRes, popup.getMenu());
 
@@ -234,18 +267,34 @@ public class DashboardFragment extends Fragment {
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                int i = menuItem.getItemId();
-                if (i == 1) {
+                binding.progressBar.setVisibility(View.VISIBLE);
+//                int i = menuItem.getItemId();
+//                Toast.makeText(getActivity(), "Selected Item ID: " + menuItem.getItemId()
+//                        + ", Name: " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+
+                Ship_id = menuItem.getItemId() + "";
+                getPurchaseListing();
+
+                /*if (i == 1) {
                     Ship_id = shipmentList.get(0).getShipId() + "";
+                    getPurchaseListing();
                     return true;
                 } else if (i == 2) {
                     Ship_id = shipmentList.get(1).getShipId() + "";
+                    getPurchaseListing();
                     return true;
                 } else if (i == 3) {
+                    Ship_id = shipmentList.get(2).getShipId() + "";
+                    getPurchaseListing();
+                    return true;
+                }else if (i == 4) {
+                    Ship_id = shipmentList.get(3).getShipId() + "";
+                    getPurchaseListing();
                     return true;
                 } else {
                     return false;
-                }
+                }*/
+                return false;
             }
         });
 
@@ -253,6 +302,7 @@ public class DashboardFragment extends Fragment {
         popup.setOnDismissListener(new PopupMenu.OnDismissListener() {
             @Override
             public void onDismiss(PopupMenu menu) {
+                binding.progressBar.setVisibility(View.GONE);
 
             }
         });
