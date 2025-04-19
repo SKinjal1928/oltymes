@@ -89,6 +89,7 @@
             android:textSize="14sp" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+
         tools:listitem="@layout/item_sales"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

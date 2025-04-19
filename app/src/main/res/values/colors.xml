@@ -4,10 +4,13 @@
     <color name="purple_500">#31858E</color>
     <color name="purple_700">#2D747C</color>
     <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_1200">#888CF3E8</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey_light">#eaeaec</color>
+    <color name="grey_trans">#88C4C4C4</color>
+    <color name="grey_dark">#646464</color>
     <color name="grey">#ABABAE</color>
     <color name="logo_color">#379AA4</color>
     <color name="camera_bg_color">#ECDAF8</color>

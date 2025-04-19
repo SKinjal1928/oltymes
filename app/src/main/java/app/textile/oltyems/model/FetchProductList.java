@@ -74,6 +74,9 @@ public class FetchProductList {
         @SerializedName("product_name")
         @Expose
         private String productName;
+        @SerializedName("weight")
+        @Expose
+        private String weight;
 
         public Integer getNoOfCtn() {
             return noOfCtn;
@@ -131,6 +134,13 @@ public class FetchProductList {
             this.productName = productName;
         }
 
+        public String getWeight() {
+            return weight;
+        }
+
+        public void setWeight(String weight) {
+            this.weight = weight;
+        }
     }
     public class Shipment {
 

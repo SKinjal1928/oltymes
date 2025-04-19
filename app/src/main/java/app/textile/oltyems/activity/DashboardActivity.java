@@ -29,6 +29,7 @@ import app.textile.oltyems.databinding.ActivityDashboardBinding;
 import app.textile.oltyems.databinding.ActivityLoginBinding;
 import app.textile.oltyems.fragment.AccountFragment;
 import app.textile.oltyems.fragment.DashboardFragment;
+import app.textile.oltyems.fragment.FragDashboard;
 import app.textile.oltyems.fragment.PaymentFragment;
 import app.textile.oltyems.fragment.SalesFragment;
 
@@ -76,6 +77,7 @@ public class DashboardActivity extends AppCompatActivity {
         Fragment fragment = null;
 
         if (id == R.id.menu_home) {
+//            fragment = new FragDashboard();
             fragment = new DashboardFragment();
         } else if (id == R.id.menu_sales) {
             fragment = new SalesFragment();

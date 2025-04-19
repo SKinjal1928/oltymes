@@ -40,9 +40,9 @@
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/poppins_semi_bold"
+            android:fontFamily="@font/lato_bold"
             android:gravity="bottom"
-            android:text="Customer"
+            android:text="Add Customer"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -77,12 +77,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/lato_bold"
             android:gravity="start"
             android:text="Customer Name"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/et_customer_name"
@@ -91,69 +91,69 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="5dp"
             android:background="@drawable/et_bg"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/lato_regular"
             android:hint="Customer Name"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="15dp"
             android:textSize="14sp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/lato_bold"
             android:gravity="start"
             android:text="Email"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
             android:layout_marginHorizontal="15dp"
             android:background="@drawable/et_bg"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/lato_regular"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
+            android:padding="15dp"
             android:textSize="14sp" />
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="14dp"
+            android:layout_marginHorizontal="15dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/lato_bold"
                 android:gravity="start"
                 android:text="Mobile"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/lato_bold"
                 android:gravity="start"
-                android:text="Coutry"
+                android:text="Country"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginVertical="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
@@ -161,16 +161,17 @@
             android:orientation="horizontal">
 
             <EditText
+
                 android:id="@+id/et_mobile_no"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/et_bg"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/lato_regular"
                 android:hint="Mobile"
                 android:inputType="phone"
                 android:maxLength="10"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -180,74 +181,75 @@
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/et_bg"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/lato_regular"
                 android:hint="Country"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:textSize="14sp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/lato_bold"
             android:gravity="start"
-            android:text="Destinstion"
+            android:text="Destination"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
         <EditText
+            android:layout_marginVertical="5dp"
             android:id="@+id/et_destination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:background="@drawable/et_bg"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/lato_regular"
             android:hint="Destination Port"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="15dp"
             android:textSize="14sp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/lato_bold"
             android:gravity="start"
             android:text="Address"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
         <EditText
+            android:layout_marginVertical="5dp"
             android:id="@+id/et_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:background="@drawable/et_bg"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/lato_regular"
             android:hint="Address"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="15dp"
             android:textSize="14sp" />
 
         <TextView
 
             android:id="@+id/txt_save"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button_bg"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center|end|right"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="5dp"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
             android:text="SAVE"
             android:textColor="@color/white"
             android:textSize="16sp"

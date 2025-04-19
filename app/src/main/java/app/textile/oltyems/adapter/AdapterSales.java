@@ -2,6 +2,10 @@ package app.textile.oltyems.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +37,7 @@ public class AdapterSales extends RecyclerView.Adapter<AdapterSales.ItemViewHold
 
     @Override
     public AdapterSales.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sales, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_dash, parent, false);
         return new AdapterSales.ItemViewHolder(view);
     }
 
@@ -41,14 +45,40 @@ public class AdapterSales extends RecyclerView.Adapter<AdapterSales.ItemViewHold
     public void onBindViewHolder(AdapterSales.ItemViewHolder holder, int position) {
         FetchProductList.PendingProduct item = itemList.get(position);
 
-        holder.titleTextView.setText(item.getProductName()+" * "+item.getNoOfCtn());
-        holder.txt_no_ctn.setText(item.getOrderOfCtn()+"");
-        holder.txt_weight.setText(item.getTotalGrossWeight()+"");
-        holder.txt_cbm.setText(item.getTotalCbm()+"");
-        holder.txt_pcs.setText(item.getTotalPcs()+"");
-        holder.txt_invoice.setText(item.getInvoiceValue()+"");
 
-        if (activity.equalsIgnoreCase("pending")) {
+        holder.txt_no_ctn.setText(item.getNoOfCtn()+" ct");
+        holder.txt_weight.setText(item.getTotalGrossWeight()+" G.Wt");
+        holder.txt_cbm.setText(item.getTotalCbm()+" CBM");
+//        holder.clientName.setText(item.getProductName()+"");
+        holder.txt_invoice.setText(item.getInvoiceValue()+" Invoice");
+
+
+       /* SpannableStringBuilder builder = new SpannableStringBuilder();
+        builder.append(item.getProductName()).append("  ").append(item.getWeight());
+
+// Optional: Style only the Qty part differently
+        int qtyStart = builder.length() - item.getWeight().length();
+        builder.setSpan(new ForegroundColorSpan(Color.GRAY), qtyStart, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+*/
+//        tvNameWithQty.setText(builder);
+        holder.titleTextView.setText(item.getProductName());
+        holder.txt_qty.setText(item.getWeight());
+        if(item.getWeight().length() > 0){
+            holder.txt_seperator.setVisibility(View.VISIBLE);
+        }else {
+            holder.txt_seperator.setVisibility(View.GONE);
+        }
+        if(item.getProductName().toString().length()>20){
+            holder.txt_elipse.setVisibility(View.VISIBLE);
+//            holder.txt_qty.setText(" - "+item.getWeight());
+//            holder.titleTextView.setText(item.getProductName());
+        }else {
+            holder.txt_elipse.setVisibility(View.GONE);
+//            holder.titleTextView.setText(item.getProductName() +" - ");
+//            holder.txt_qty.setText(item.getWeight());
+        }
+//        holder.amountDue.setText(item.getWeight());
+       /* if (activity.equalsIgnoreCase("pending")) {
             holder.linearLayout.setBackground(ContextCompat.getDrawable(mCtx, R.drawable.side_line_pending));
         } else if (activity.equalsIgnoreCase("process")) {
             holder.linearLayout.setBackground(ContextCompat.getDrawable(mCtx, R.drawable.side_line_proceed));
@@ -56,7 +86,7 @@ public class AdapterSales extends RecyclerView.Adapter<AdapterSales.ItemViewHold
             holder.linearLayout.setBackground(ContextCompat.getDrawable(mCtx, R.drawable.side_line_complete
 
             ));
-        }
+        }*/
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +103,9 @@ public class AdapterSales extends RecyclerView.Adapter<AdapterSales.ItemViewHold
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, txt_no_ctn, txt_pcs, txt_weight, txt_cbm, txt_invoice;
+        TextView titleTextView, txt_no_ctn, txt_qty, txt_weight, txt_cbm, txt_invoice, txt_elipse,
+                txt_seperator;
+//                clientName, amountDue;
         LinearLayout linearLayout;
 
             public ItemViewHolder(View itemView) {
@@ -81,10 +113,13 @@ public class AdapterSales extends RecyclerView.Adapter<AdapterSales.ItemViewHold
                 titleTextView = itemView.findViewById(R.id.itemTitle);  // Using a simple TextView
                 txt_no_ctn = itemView.findViewById(R.id.txt_no_of_ctn);  // Using a simple TextView
                 txt_cbm = itemView.findViewById(R.id.txt_cbm);  // Using a simple TextView
-                txt_pcs = itemView.findViewById(R.id.txt_pcs);  // Using a simple TextView
+                txt_qty = itemView.findViewById(R.id.txt_qty);  // Using a simple TextView
                 txt_weight = itemView.findViewById(R.id.txt_weight);  // Using a simple TextView
                 txt_invoice = itemView.findViewById(R.id.txt_invoice);  // Using a simple TextView
-                linearLayout = itemView.findViewById(R.id.ll_main);  // Using a simple TextView
+                txt_elipse = itemView.findViewById(R.id.txt_elipse);  // Using a simple TextView
+                txt_seperator = itemView.findViewById(R.id.txt_seperator);  // Using a simple TextView
+//                amountDue = itemView.findViewById(R.id.amountDue);  // Using a simple TextView
+//                linearLayout = itemView.findViewById(R.id.ll_main);  // Using a simple TextView
             }
     }
 }

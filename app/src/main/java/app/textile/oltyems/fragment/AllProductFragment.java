@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.MenuRes;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -32,11 +33,12 @@ import app.textile.oltyems.activity.CustomerActivity;
 import app.textile.oltyems.activity.NewProductActivity;
 import app.textile.oltyems.activity.SalesActivity;
 import app.textile.oltyems.activity.ViewAllActivity;
-import app.textile.oltyems.adapter.AdapterDashboard;
+import app.textile.oltyems.adapter.AdapterPurchase;
 import app.textile.oltyems.adapter.AdapterSales;
+import app.textile.oltyems.adapter.AdapterShipment;
 import app.textile.oltyems.common.SharedPref;
+import app.textile.oltyems.databinding.FragAllProductBinding;
 
-import app.textile.oltyems.databinding.FragDashboardBinding;
 import app.textile.oltyems.model.FetchProductList;
 import app.textile.oltyems.model.FetchShipmentList;
 import app.textile.oltyems.model.FetchShipmentResponse;
@@ -46,16 +48,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DashboardFragment extends Fragment implements View.OnClickListener {
+public class AllProductFragment extends Fragment implements View.OnClickListener {
 
-    FragDashboardBinding binding;
+    FragAllProductBinding binding;
     RetroInterface apiInterface;
     List<FetchShipmentList.Datum> shipmentList;
     String Ship_id = "", activity = "";
     ColorStateList def;
     private AdapterSales itemAdapter;
+    private AdapterShipment shipmentAdapter;
     List<FetchProductList.PendingProduct> shipmentProductList;
-    public DashboardFragment() {
+    public AllProductFragment() {
         // require a empty public constructor
     }
 
@@ -63,7 +66,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 //        View rootView = inflater.inflate(R.layout.frag_dashboard, container, false);
-        binding = FragDashboardBinding.inflate(inflater, container, false);
+        binding = FragAllProductBinding.inflate(inflater, container, false);
         SharedPref.init(getActivity());
         shipmentList = new ArrayList<>();
         shipmentProductList = new ArrayList<>();
@@ -74,50 +77,23 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
         def = binding.item2.getTextColors();
 
-        binding.llScanBarcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), ScannedBarcodeActivity.class);
-                i.putExtra("activity", "purchase");
-                startActivity(i);
-            }
-        });
         binding.txtAllPurchaseShipment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showMenu(v, R.menu.order_category);
             }
         });
-        binding.txtAllSalesShipment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showMenu(v, R.menu.order_category);
-            }
-        });
-        binding.llCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCustomDialog(v);
-            }
-        });
-        binding.viewAllPurchaseOrder.setOnClickListener(new View.OnClickListener() {
+     /*   binding.viewAllPurchaseOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), ViewAllActivity.class);
                 i.putExtra("activity", "purchase");
                 startActivity(i);
             }
-        });
-        binding.viewAllSalesOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), ViewAllActivity.class);
-                i.putExtra("activity", "sales");
-                startActivity(i);
-            }
-        });
+        });*/
+
         // Set scroll listener
-        binding.scrollPurchaseOrder.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+      /*  binding.scrollPurchaseOrder.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 // Check if the scrollX has exceeded a certain threshold (e.g., 500px)
@@ -130,19 +106,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 }
             }
         });
-        binding.scrollSalesOrder.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                // Check if the scrollX has exceeded a certain threshold (e.g., 500px)
-                if (scrollX > 500) {
-                    // Show the view once the scroll position exceeds 500px
-                    binding.viewAllSalesOrder.setVisibility(View.VISIBLE);
-                } else {
-                    // Hide the view if the scroll position is below 500px
-                    binding.viewAllSalesOrder.setVisibility(View.GONE);
-                }
-            }
-        });
+
         binding.llPurchasePending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,30 +117,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 startActivity(i);
 //                startActivity(new Intent(getActivity(), SalesActivity.class));
             }
-        });
-        binding.llPurchaseProcess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), SalesActivity.class);
-                i.putExtra("from","process");
-                i.putExtra("ship_id",Ship_id);
-                startActivity(i);
-            }
-        });
-        binding.llPurchaseComplete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), SalesActivity.class);
-                i.putExtra("from","complete");
-                i.putExtra("ship_id", Ship_id);
-                startActivity(i);
-            }
-        });
+        });*/
         binding.txtMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Navigate to DetailsFragment
-                Fragment detailsFragment = new AllProductFragment();
+                Fragment detailsFragment = new FragDashboard();
                 requireActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frame, detailsFragment)
@@ -209,13 +155,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 if (response.code() == 200) {
                     Log.d("Purchase Success",  "");
                     if (response.body().getData().getOrderCounts().getPending() != null) {
-                        binding.txtPendingCount.setText("Pending (" + response.body().getData().getOrderCounts().getPending() + ")");
+//                        binding.txtPendingCount.setText("Pending (" + response.body().getData().getOrderCounts().getPending() + ")");
                     }
                     if (response.body().getData().getOrderCounts().getProceed() != null) {
-                        binding.txtProcessCount.setText("Process (" + response.body().getData().getOrderCounts().getProceed() + ")");
+//                        binding.txtProcessCount.setText("Process (" + response.body().getData().getOrderCounts().getProceed() + ")");
                     }
                     if (response.body().getData().getOrderCounts().getCompleted() != null) {
-                        binding.txtCompleteCount.setText("Complete (" + response.body().getData().getOrderCounts().getCompleted() + ")");
+//                        binding.txtCompleteCount.setText("Complete (" + response.body().getData().getOrderCounts().getCompleted() + ")");
                     }
 
                     if (response.body().getData().getPendingData() != null) {
@@ -237,35 +183,35 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     }
                     if (response.body().getData().getProceedData() != null) {
                         if (response.body().getData().getProceedData().getTotalCtnShip() != null) {
-                            binding.txtCtnProcess.setText(response.body().getData().getProceedData().getTotalCtnShip() + "");
+//                            binding.txtCtnProcess.setText(response.body().getData().getProceedData().getTotalCtnShip() + "");
                         }
                         if (response.body().getData().getProceedData().getTotalCbmShip() != null) {
-                            binding.txtCbmProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalCbmShip())) + "");
+//                            binding.txtCbmProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalCbmShip())) + "");
                         }
                         if (response.body().getData().getProceedData().getTotalWeightShip()!= null) {
 //                            binding.txtWeightProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalWeightShip())) + "");
-                            binding.txtWeightProcess.setText(response.body().getData().getProceedData().getTotalWeightShip() + "");
+//                            binding.txtWeightProcess.setText(response.body().getData().getProceedData().getTotalWeightShip() + "");
                         }
                         if (response.body().getData().getProceedData().getTotalInvoiceShip() != null) {
 //                            binding.txtInvoiceProcess.setText(df.format(Float.parseFloat(response.body().getData().getProceedData().getTotalInvoiceShip())) + "");
-                            binding.txtInvoiceProcess.setText(response.body().getData().getProceedData().getTotalInvoiceShip() + "");
+//                            binding.txtInvoiceProcess.setText(response.body().getData().getProceedData().getTotalInvoiceShip() + "");
                         }
                     }
 
                     if (response.body().getData().getCompletedData() != null) {
                         if (response.body().getData().getCompletedData().getTotalCtnShip() != null) {
-                            binding.txtCtnComplete.setText(response.body().getData().getCompletedData().getTotalCtnShip()+ "");
+//                            binding.txtCtnComplete.setText(response.body().getData().getCompletedData().getTotalCtnShip()+ "");
                         }
                         if (response.body().getData().getCompletedData().getTotalCbmShip() != null) {
-                            binding.txtCbmComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalCbmShip())) + "");
+//                            binding.txtCbmComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalCbmShip())) + "");
                         }
                         if (response.body().getData().getCompletedData().getTotalWeightShip() != null) {
 //                            binding.txtWeightComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalWeightShip())) + "");
-                            binding.txtWeightComplete.setText(response.body().getData().getCompletedData().getTotalWeightShip() + "");
+//                            binding.txtWeightComplete.setText(response.body().getData().getCompletedData().getTotalWeightShip() + "");
                         }
                         if (response.body().getData().getCompletedData().getTotalInvoiceShip() != null) {
 //                            binding.txtInvoiceComplete.setText(df.format(Float.parseFloat(response.body().getData().getCompletedData().getTotalInvoiceShip())) + "");
-                            binding.txtInvoiceComplete.setText(response.body().getData().getCompletedData().getTotalInvoiceShip() + "");
+//                            binding.txtInvoiceComplete.setText(response.body().getData().getCompletedData().getTotalInvoiceShip() + "");
                         }
                     }
                     binding.progressBar.setVisibility(View.GONE);
@@ -408,6 +354,11 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 if (response.code() == 200) {
                     Log.d("Shipment data Success", response.body().getSuccess() + "");
                     shipmentList.addAll(response.body().getData());
+
+                    binding.rvShipment.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    shipmentAdapter = new AdapterShipment(getActivity(), shipmentList);
+                    binding.rvShipment.setAdapter(shipmentAdapter);
+
                     if (shipmentList.size() > 0) {
                         Ship_id = shipmentList.get(0).getShipId() + "";
                         getPurchaseListing();

@@ -90,6 +90,7 @@
             android:textSize="14sp" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/grey_trans"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

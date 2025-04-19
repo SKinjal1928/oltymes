@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="2dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="horizontal"
+            android:paddingVertical="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="2dp">
+                        <!--<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/img_logo"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="G.Wt"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />-->
+                        <TextView
+                            android:id="@+id/txt_invoice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/img_logo"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="center|start"
+                            android:text="28 Invoice"
+                            android:textColor="@color/grey_dark"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingVertical="10dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp">
+                            <TextView
+                                android:singleLine="true"
+                                android:maxLength="20"
+                                android:layout_alignParentLeft="true"
+                                android:id="@+id/itemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="none"
+                                android:maxLines="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:text="Nepali Bazar long name test hajkjkj"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:visibility="gone"
+                                android:layout_toRightOf="@id/itemTitle"
+                                android:id="@+id/txt_elipse"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
+                                android:text=".."
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                            <TextView
+                                android:visibility="gone"
+                                android:layout_toLeftOf="@+id/txt_qty"
+                                android:id="@+id/txt_seperator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
+                                android:text=" - "
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                            <TextView
+                                android:layout_marginStart="2dp"
+                                android:layout_toRightOf="@id/txt_elipse"
+                                android:id="@+id/txt_qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
+                                android:text="200000 Gm"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+
+                            android:id="@+id/txt_no_of_ctn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/img_logo"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="center|end"
+                            android:text="10000 ct"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                        <!-- <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_centerInParent="true"
+                             android:layout_marginStart="5dp"
+                             android:fontFamily="@font/poppins_regular"
+                             android:gravity="center"
+                             android:text="CTN"
+                             android:textColor="@color/black"
+                             android:textSize="10sp" />-->
+
+
+                        <!--                        </LinearLayout>-->
+                    </LinearLayout>
+                    <!-- <View
+                         android:visibility="visible"
+                         android:layout_marginVertical="3dp"
+                         android:layout_width="match_parent"
+                         android:layout_height="0.5dp"
+                         android:background="@color/grey" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:paddingVertical="2dp">
+
+                                <TextView
+                                    android:id="@+id/txt_cbm"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/img_logo"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:gravity="center|start"
+                                    android:text="35.45 CBM"
+                                    android:textColor="@color/black"
+                                    android:textSize="11sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_weight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/img_logo"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:gravity="center|end"
+                                    android:text="10000 G.Wt"
+                                    android:textColor="@color/black"
+                                    android:textSize="11sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginVertical="1dp"
+        android:background="@color/grey"
+        android:visibility="visible" />
+
+<!--
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        &lt;!&ndash; Invoice Title &ndash;&gt;
+        <TextView
+            android:id="@+id/invoiceTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Invoice 315"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        &lt;!&ndash; Client Name &ndash;&gt;
+        <TextView
+            android:id="@+id/clientName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Om India Food Centre"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/amountDue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/invoiceTitle" />
+
+        &lt;!&ndash; Amount Due &ndash;&gt;
+        <TextView
+            android:id="@+id/amountDue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$480.00 due"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/clientName" />
+
+        &lt;!&ndash; Due Info &ndash;&gt;
+        <TextView
+            android:id="@+id/dueInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due 1468 days ago"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clientName" />
+
+        &lt;!&ndash; Overdue Badge &ndash;&gt;
+        <TextView
+            android:id="@+id/overdueBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:text="Overdue"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/dueInfo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+-->
+
+</LinearLayout>

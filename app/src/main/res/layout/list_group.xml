@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
+    android:layout_marginVertical="2dp"
+    android:layout_marginHorizontal="3dp"
     android:elevation="4dp"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="2dp"
     tools:context=".activity.NewProductActivity">
 
     <LinearLayout
@@ -15,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,28 +36,31 @@
                     android:orientation="vertical">
 
                     <TextView
+
+                        android:layout_marginVertical="3dp"
                         android:id="@+id/txt_product_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lato_black"
                         android:gravity="center|start"
                         android:text="Product name"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
+                        android:layout_marginVertical="3dp"
                         android:id="@+id/txt_weight_quantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/img_logo"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:gravity="center"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center|start"
                         android:text="500gms * 16pcs"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
+                        android:textColor="@color/grey_dark"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -66,18 +71,20 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:layout_marginVertical="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginStart="5dp"
                         android:layout_toEndOf="@+id/img_logo"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/lato_regular"
                         android:gravity="center"
                         android:text="Ctn"
                         android:textColor="@color/black"
-                        android:textSize="10sp" />
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:layout_marginVertical="3dp"
                         android:id="@+id/txt_ctn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -85,11 +92,11 @@
                         android:layout_marginStart="5dp"
                         android:layout_toEndOf="@+id/img_logo"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_semi_bold"
+                        android:fontFamily="@font/lato_regular"
                         android:gravity="center"
                         android:text="28"
                         android:textColor="@color/black"
-                        android:textSize="10sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
