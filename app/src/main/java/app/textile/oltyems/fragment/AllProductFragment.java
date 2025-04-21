@@ -22,6 +22,7 @@ import androidx.annotation.MenuRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -355,7 +356,7 @@ public class AllProductFragment extends Fragment implements View.OnClickListener
                     Log.d("Shipment data Success", response.body().getSuccess() + "");
                     shipmentList.addAll(response.body().getData());
 
-                    binding.rvShipment.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    binding.rvShipment.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
                     shipmentAdapter = new AdapterShipment(getActivity(), shipmentList);
                     binding.rvShipment.setAdapter(shipmentAdapter);
 

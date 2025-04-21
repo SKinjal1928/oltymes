@@ -25,7 +25,7 @@ public class AdapterShipment extends RecyclerView.Adapter<AdapterShipment.ItemVi
 
     @Override
     public AdapterShipment.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shipmen, parent, false);
         return new AdapterShipment.ItemViewHolder(view);
     }
 
@@ -45,7 +45,7 @@ public class AdapterShipment extends RecyclerView.Adapter<AdapterShipment.ItemVi
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            titleTextView = itemView.findViewById(R.id.itemTitle);  // Using a simple TextView
+            titleTextView = itemView.findViewById(R.id.txt_shipment);  // Using a simple TextView
         }
     }
 }
